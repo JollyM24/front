@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import home from "@/views/home.vue";
 import diagrams from "@/views/diagrams.vue";
+import diatest from "@/views/diatest.vue";
 
 const routes = [
     {
@@ -13,6 +14,11 @@ const routes = [
         name: "diagrams",
         component: diagrams,
       },
+      {
+        path: "/diatest",
+        name: "diatest",
+        component: diatest,
+      }
     ];
     
     const router = createRouter({

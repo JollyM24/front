@@ -3,16 +3,15 @@
   <div id="headtext"><h1>Итоги явки</h1></div>
   <div class="formed_box">
 
-    <!-- <div v-for="tps_item in tpss.tps" :key="tps_item.id">
-
+  <div v-for="tps_item in tpss.tps" :key="tps_item.id">
     <div class="dia">
-        <h2>ТИК № {{ tps_item.id }}</h2>
-        <vue3-chart-js class="pie"
-        :data="tps_item[0]"/>
+      <h2>ТИК № {{ tps_item.id }}</h2>
+        <vue3-chart-js class="pie" 
+          :type="pieChart.type"
+          :data="tps_item"/>
         <h4>Всего жителей: {{ tps_item.total_all }}</h4>
-      </div>
-
-    </div> -->
+    </div>
+  </div>
     <!-- <tpsList :tpss="tpss">
       <div class="dia en" v-for="tps in tpss" :key="tps.id">
       <p>ТИК №{{ tps.id }}</p>
@@ -53,14 +52,14 @@
 </template>
 
 <script>
-// import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
+import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
 import tpss from '@/json/tpsList.json'
 
 export default {
   name: 'diagrams',
-  // components: {
-  //   Vue3ChartJs
-  // },
+  components: {
+    Vue3ChartJs
+  },
   data() {
       return {
         tpss
@@ -68,9 +67,9 @@ export default {
   },
 
   setup () {
-    console.log(tpss.time);
+    console.log(tpss.tps[1].total_voted, tpss.tps[1].total_all)
 
-    const pieChart = {
+    let pieChart = {
       id: 'pie',
       type: 'pie',
       data: {

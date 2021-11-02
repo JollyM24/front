@@ -10,12 +10,14 @@
 <script>
 import home from '@/views/home.vue'
 import diagrams from '@/views/diagrams.vue'
+import diatest from '@/views/diatest.vue'
 
 export default {
   name: 'App',
   props: {
     home,
-    diagrams
+    diagrams,
+    diatest
   }
 }
 </script>
