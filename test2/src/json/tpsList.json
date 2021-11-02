@@ -1,0 +1,10 @@
+{
+    "tps":[
+        {
+            "id": 1,
+            "total_all": 10,
+            "total_voted":5
+        }
+    ],
+    "time": "10:00"
+}
