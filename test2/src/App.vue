@@ -1,23 +1,27 @@
 <template>
 <div id="app">   
-        <!-- <div id="logo">
-          <img :src="image"/>
-        </div> -->
+    <div id="logo">
+      <img src="@/logo.png"/>
+    </div>  
       <router-view/>
   </div>
 </template>
 
 <script>
 import home from '@/views/home.vue'
+import form from '@/views/form.vue'
 import diagrams from '@/views/diagrams.vue'
-import diatest from '@/views/diatest.vue'
+import results from "@/views/results.vue"
+import form_results from "@/views/form_results.vue"
 
 export default {
   name: 'App',
   props: {
     home,
+    form,
     diagrams,
-    diatest
+    results,
+    form_results
   }
 }
 </script>
@@ -32,10 +36,10 @@ body {
     min-height: 100%;
 }
 
-/* #logo{
+#logo{
     position: relative;
     text-align: center;
-    margin: 40px auto;
+    margin: 25px auto;
     width:60%;
     text-transform: uppercase;
     
@@ -43,5 +47,5 @@ body {
     font-size: 24px;
     letter-spacing: 0.18em;
     color: #354F67;
-} */
+}
 </style>

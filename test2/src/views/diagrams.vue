@@ -4,92 +4,57 @@
   <div class="formed_box">
 
   <div v-for="tps_item in tpss.tps" :key="tps_item.id">
-    <div class="dia">
-      <h2>ТИК № {{ tps_item.id }}</h2>
-        <vue3-chart-js class="pie" 
-          :type="pieChart.type"
-          :data="tps_item"/>
-        <h4>Всего жителей: {{ tps_item.total_all }}</h4>
-    </div>
+    <diagram  :item="tps_item" />
   </div>
-    <!-- <tpsList :tpss="tpss">
-      <div class="dia en" v-for="tps in tpss" :key="tps.id">
-      <p>ТИК №{{ tps.id }}</p>
-      <vue3-chart-js class="pie" :id="pieChart.id" :type="pieChart.type" :data="pieChart.data"/>
-    </div>
-    </div> -->
-    <!-- <div class="dia" style="grid-area: a;">
-      <h2>ТИК №1</h2>
-      <vue3-chart-js class="pie" :id="pieChart.id" :type="pieChart.type" :data="pieChart.data"/>
-      <h4>Всего жителей: {{ total_all }}</h4>
-      </div>
-    <div class="dia" style="grid-area: b;">
-      <h2>ТИК №2</h2>
-      <vue3-chart-js class="pie" :id="pieChart.id" :type="pieChart.type" :data="pieChart.data"/>
-      <h4>Всего жителей: {{ total_all }}</h4>
-    </div>
-    <div  class="dia" style="grid-area: c;">
-      <h2>ТИК №3</h2>
-      <vue3-chart-js class="pie" :id="pieChart.id" :type="pieChart.type" :data="pieChart.data"/>
-      <h4>Всего жителей: {{ total_all }}</h4>
-    </div>
-    <div  class="dia" style="grid-area: d;">
-      <h2>ТИК №4</h2>
-      <vue3-chart-js class="pie" :id="pieChart.id" :type="pieChart.type" :data="pieChart.data"/>
-      <h4>Всего жителей: {{ total_all }}</h4>
-    </div>
-    <div  class="dia" style="grid-area: e;">
-      <h2>ТИК №5</h2>
-      <vue3-chart-js class="pie" :id="pieChart.id" :type="pieChart.type" :data="pieChart.data"/>
-      <h4>Всего жителей: {{ total_all }}</h4>
-    </div> -->
-    <div style="grid-area: end">
+  
+  <div style="grid-area: end">
       <label>Последнее обновление</label>
       <div class="time">{{ tpss.time }}</div>
     </div>
   </div>
-</div>
+  <button @click="$router.push('/')">
+                <a style="font-size: 15px;">Вернуться на домашнюю страницу</a>
+        </button>
+  </div>
 </template>
 
 <script>
-import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
+//import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
+import Diagram from '@/components/diagram.vue'
 import tpss from '@/json/tpsList.json'
 
 export default {
   name: 'diagrams',
   components: {
-    Vue3ChartJs
+    // Vue3ChartJs
+    Diagram
   },
-  data() {
-      return {
-        tpss
+  data(){
+    return{
+       tpss
       }
-  },
+  }
+  // setup() {
+  //     var pieChart = {
+  //     id: 'pie',
+  //     type: 'pie',
+  //     data: {
+  //       datasets: [
+  //         { 
+  //           backgroundColor: [
+  //             '#E46651',
+  //             '#5c5466'
+  //           ],
+  //           data: [tpss.tps[i].total_voted, (tpss.tps[i].total_all-tpss.tps[i].total_voted)],
+  //         }
+  //       ]
+  //     }
+  //   }
 
-  setup () {
-    console.log(tpss.tps[1].total_voted, tpss.tps[1].total_all)
-
-    let pieChart = {
-      id: 'pie',
-      type: 'pie',
-      data: {
-        datasets: [
-          { 
-            backgroundColor: [
-              '#E46651',
-              '#5c5466'
-            ],
-            data: [tpss.tps[0].total_voted, (tpss.tps[0].total_all-tpss.tps[0].total_voted)]
-          }
-        ]
-      }
-    }
-
-    return {
-      pieChart
-    }
-    
-  },
+  //   return {
+  //     pieChart
+  //   }
+  // }
 }
 </script>
 
@@ -126,7 +91,7 @@ export default {
     grid-gap: 10px; */
 }
 
-.dia {
+/* .dia {
   position: relative;
   display: table-cell;   
   flex: 1 0 auto; 
@@ -157,7 +122,7 @@ export default {
   box-sizing: border-box;
   max-height: 150px;
   max-width: 150px;
-}
+} */
 
 label {
   font-family: Open Sans;
@@ -178,5 +143,35 @@ label {
     color: #1e162f;
     background: rgba(14, 11, 17, 0.435);
     border-radius: 10px;
+}
+
+button, .button{
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 10px;
+    top: 5px;
+
+    width: 200px;
+    height: 45px;
+
+    box-shadow: inset 0 -25px rgba(0, 0, 0, 17%);
+    background: #303752;
+    border-radius: 3px;
+}
+
+button a, .button a{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    vertical-align: middle;
+    font-family: Roboto Mono;
+    font-style: normal;
+    font-size: 30px;
+    color: #E3E3E3;
+    text-decoration: none;
+    letter-spacing: 0.05em;
 }
 </style> 
