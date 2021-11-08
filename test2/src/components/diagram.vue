@@ -1,11 +1,11 @@
 <template>
     <div class="dia">
-        <!-- <h2>ТИК №{{item.id}}</h2> -->
+        <h2>ТИК №{{item.id}}</h2>
         <!-- <vue3-chart-js class="pie" 
           :type="pieChart.type"
           :data="item"/> -->
-          <!-- <canvas ref="pieDiagram" />
-        <h4>Всего жителей: {{ item.total_all}} </h4> -->
+          <canvas ref="pieDiagram" />
+        <h4>Всего жителей: {{ item.total_all}} </h4>
     </div>
 </template>
 
@@ -20,30 +20,30 @@ export default {
       default: null
     },
   },
-  // mounted(props) {
-  //   let ctx = this.$refs.pieDiagram.getContext("2d");
+  mounted(props) {
+    let ctx = this.$refs.pieDiagram.getContext("2d");
 
-  //   const totalVotedDataset = props.item.total_voted;
-  //   const totalNotVotedDataset = props.item.total_all - props.item.total_voted;
-  //   const colors = ['#E46651', '#5c5466']; 
-  //   const data = {
-  //     // labels,
-  //     datasets: [
-  //       {
-  //         data: [totalVotedDataset, totalNotVotedDataset],
-  //         backgroundColor: colors,
-  //       }
-  //     ],
-  //   };
+    const totalVotedDataset = props.item.total_voted;
+    const totalNotVotedDataset = props.item.total_all - props.item.total_voted;
+    const colors = ['#E46651', '#5c5466']; 
+    const data = {
+      // labels,
+      datasets: [
+        {
+          data: [totalVotedDataset, totalNotVotedDataset],
+          backgroundColor: colors,
+        }
+      ],
+    };
 
-  //   new Chart(ctx, {
-  //     type: "pie",
-  //     data
-  //   });
-  // },
-  // created() {
-  //   Chart.register(...registerables);
-  // },
+    new Chart(ctx, {
+      type: "pie",
+      data
+    });
+  },
+  created() {
+    Chart.register(...registerables);
+  },
   //   name: 'Diagram',
   //   components: Vue3ChartJs,
   //   props: {
