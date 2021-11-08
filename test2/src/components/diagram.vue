@@ -1,16 +1,13 @@
 <template>
     <div class="dia">
         <h2>ТИК №{{item.id}}</h2>
-        <!-- <vue3-chart-js class="pie" 
-          :type="pieChart.type"
-          :data="item"/> -->
           <canvas ref="pieDiagram" />
         <h4>Всего жителей: {{ item.total_all}} </h4>
     </div>
 </template>
 
 <script>
-//import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
+import { Chart, registerables } from "chart.js";
 
 export default {
   name: 'Diagram',
@@ -27,7 +24,6 @@ export default {
     const totalNotVotedDataset = props.item.total_all - props.item.total_voted;
     const colors = ['#E46651', '#5c5466']; 
     const data = {
-      // labels,
       datasets: [
         {
           data: [totalVotedDataset, totalNotVotedDataset],
@@ -44,37 +40,7 @@ export default {
   created() {
     Chart.register(...registerables);
   },
-  //   name: 'Diagram',
-  //   components: Vue3ChartJs,
-  //   props: {
-  //       item: {
-  //           type: Object,
-  //           default: null
-  //       },
-  //   },
-  //   setup(props) {
-  //     console.log(props.item.total_voted);
-
-  //     const pieChart = {
-  //     id: 'pie',
-  //     type: 'pie',
-  //     data: {
-  //       datasets: [
-  //         { 
-  //           backgroundColor: [
-  //             '#E46651',
-  //             '#5c5466'
-  //           ],
-  //           data: [props.item.total_voted, (props.item.total_all-props.item.total_voted)],
-  //         }
-  //       ]
-  //     }
-  //   }
-
-  //   return {
-  //     pieChart
-  //   }
-  // }
+  
 }
 </script>
 
