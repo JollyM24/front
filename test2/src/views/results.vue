@@ -53,7 +53,8 @@ export default {
     },
     setup() {
         const totalResults = res.res;
-        const dataColors = ['#352C5B',
+        const dataColors = [
+                 '#352C5B',
                 '#4F3B6F',
                 '#824867', 
                 '#975858',
